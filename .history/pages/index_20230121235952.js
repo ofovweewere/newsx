@@ -4,7 +4,5 @@ import Navigation from "../components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  return <div className={styles.main}>
-    <h1>Home</h1>
-  </div>;
+  return <div className={styles.main}></div>;
 }
