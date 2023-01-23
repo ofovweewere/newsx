@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   }
 
   //db connect
-  await dbConnect();
+  await dbConnect;
   const { name } = req.body;
 
   res.status(200).json({
