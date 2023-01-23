@@ -10,8 +10,8 @@ export const getStaticProps = async () => {
 const Post = ({ post }) => {
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+      <h1>Post</h1>
+      <h2>by {post}</h2>
     </div>
   );
 };

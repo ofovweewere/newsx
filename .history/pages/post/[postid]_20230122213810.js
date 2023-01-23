@@ -28,7 +28,6 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post: jsonPost || null,
     },
-    revalidate: 3,
   };
 };
 const PostDetails = ({ post }) => {

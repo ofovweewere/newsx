@@ -10,13 +10,8 @@ export const getStaticPaths = async () => {
           postId: "5",
         },
       },
-      {
-        params: {
-          postId: "10",
-        },
-      },
     ],
-    fallback: true,
+    fallback: false,
   };
 };
 export const getStaticProps = async ({ params }) => {
@@ -28,15 +23,11 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post: jsonPost || null,
     },
-    revalidate: 3,
   };
 };
 const PostDetails = ({ post }) => {
   const router = useRouter();
   const { postId } = router.query;
-  if (router.isFallback) {
-    return <h1>Loading...</h1>;
-  }
   return (
     <div>
       <h1>{post.title}</h1>
