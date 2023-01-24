@@ -1,4 +1,5 @@
 export const errorHandler = (data, res, code = 400) => {
+  console.log(data);
   if (data.code === 11000) {
     res.status(code).json({
       hasError: true,

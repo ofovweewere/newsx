@@ -3,6 +3,7 @@ import User from "@/models/user";
 import { errorHandler, responseHandler, validateAllOnce } from "@/utils/common";
 import bcrypt from "bcrypt";
 export default async function handler(req, res) {
+  console.log("here called api");
   if (req.method !== "POST") {
     //return error
     errorHandler("Invalid Request Type", res);
