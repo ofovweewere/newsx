@@ -1,22 +1,15 @@
 const Signup = (props) => {
   return (
     <main className="form-signin w-100 m-auto">
-      <form
-        style={{
-          margin: "50px 0",
-        }}
-      >
+      <form>
+        <img
+          className="mb-4"
+          src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+          alt=""
+          width="72"
+          height="57"
+        />
         <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
-
-        <div className="form-floating">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="Name"
-          />
-          <label for="floatingInput">Name</label>
-        </div>
 
         <div className="form-floating">
           <input

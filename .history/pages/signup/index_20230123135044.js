@@ -1,11 +1,7 @@
 const Signup = (props) => {
   return (
     <main className="form-signin w-100 m-auto">
-      <form
-        style={{
-          margin: "50px 0",
-        }}
-      >
+      <form>
         <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
 
         <div className="form-floating">
