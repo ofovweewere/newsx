@@ -55,30 +55,31 @@ const Header = (props) => {
             </a>
             {authenticated ? (
               <Link href="/" legacyBehavior>
-                <a className="btn btn-sm btn-outline-secondary" href="#">
+                <a
+                  className="btn btn-sm btn-outline-secondary user-login-btn"
+                  href="#"
+                >
                   Logout
                 </a>
               </Link>
             ) : (
-              <>
-                <Link href="/signup" legacyBehavior>
-                  <a
-                    className="btn btn-sm btn-outline-secondary user-login-btn"
-                    href="#"
-                  >
-                    Sign up
-                  </a>
-                </Link>
-                <Link href="/login" legacyBehavior>
-                  <a
-                    className="btn btn-sm btn-outline-secondary user-login-btn"
-                    href="#"
-                  >
-                    Sign in
-                  </a>
-                </Link>
-              </>
+              <Link href="/login" legacyBehavior>
+                <a
+                  className="btn btn-sm btn-outline-secondary user-login-btn"
+                  href="#"
+                >
+                  Sign in
+                </a>
+              </Link>
             )}
+            <Link href="/signup" legacyBehavior>
+              <a
+                className="btn btn-sm btn-outline-secondary user-login-btn"
+                href="#"
+              >
+                Sign up
+              </a>
+            </Link>
           </div>
         </div>
       </header>

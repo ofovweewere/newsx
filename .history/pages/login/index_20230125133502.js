@@ -19,6 +19,7 @@ const Login = (props) => {
       dispatch({ type: authConstants.LOGIN_SUCCESS, payload: session });
       router.replace("/");
     } else {
+      console.log("ERROR DBANJ", result.error);
       dispatch({ type: authConstants.LOGIN_FAILURE, payload: result.error });
       setErrorMessage(result.error);
     }

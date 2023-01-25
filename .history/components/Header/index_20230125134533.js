@@ -53,32 +53,22 @@ const Header = (props) => {
                 <path d="M21 21l-5.2-5.2" />
               </svg>
             </a>
-            {authenticated ? (
-              <Link href="/" legacyBehavior>
-                <a className="btn btn-sm btn-outline-secondary" href="#">
-                  Logout
-                </a>
-              </Link>
-            ) : (
-              <>
-                <Link href="/signup" legacyBehavior>
-                  <a
-                    className="btn btn-sm btn-outline-secondary user-login-btn"
-                    href="#"
-                  >
-                    Sign up
-                  </a>
-                </Link>
-                <Link href="/login" legacyBehavior>
-                  <a
-                    className="btn btn-sm btn-outline-secondary user-login-btn"
-                    href="#"
-                  >
-                    Sign in
-                  </a>
-                </Link>
-              </>
-            )}
+            <Link href="/signup" legacyBehavior>
+              <a
+                className="btn btn-sm btn-outline-secondary user-login-btn"
+                href="#"
+              >
+                Sign up
+              </a>
+            </Link>
+            <Link href="/login" legacyBehavior>
+              <a
+                className="btn btn-sm btn-outline-secondary user-login-btn"
+                href="#"
+              >
+                Sign in
+              </a>
+            </Link>
           </div>
         </div>
       </header>
