@@ -10,6 +10,7 @@ const Login = (props) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const router = useRouter();
   const [state, dispatch] = useStore();
+
   const user = getValue(state, ["user"], null);
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -25,10 +26,6 @@ const Login = (props) => {
       setErrorMessage(result.error);
     }
   };
-  if (user && user.authenticated) {
-    router.replace("/");
-    return null;
-  }
   return (
     <main className="form-signin w-100 m-auto">
       <form

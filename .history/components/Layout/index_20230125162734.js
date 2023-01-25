@@ -2,29 +2,12 @@ import Header from "../Header";
 import Head from "next/head";
 import { useStore } from "@/client/context";
 import { useEffect } from "react";
-import { authConstants } from "@/client/context/constants";
-import { getValue } from "@/utils/common";
-import { getSession } from "next-auth/react";
 const Layout = ({ children }) => {
   const [state, dispatch] = useStore();
   useEffect(() => {
-    // declare the data fetching function
-    const session = async () => {
-      const authenticated = getValue(state, ["user", "authenticated"], false);
-      if (!authenticated) {
-        dispatch({ type: authConstants.LOGIN_REQUEST });
-        const session = await getSession();
-        if (session) {
-          dispatch({
-            type: authConstants.LOGIN_SUCCESS,
-            payload: session,
-          });
-        } else {
-          dispatch({ type: authConstants.LOGIN_FAILURE, payload: session });
-        }
-      }
-    };
-    session();
+    const authenticated = getValue(state, ["user", "authenticated"], false);
+    if (!authenticated) {
+    }
   }, []);
   return (
     <>

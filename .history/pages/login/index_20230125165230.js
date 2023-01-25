@@ -1,5 +1,6 @@
 import { useStore } from "@/client/context";
 import { authConstants } from "@/client/context/constants";
+import { getValue } from "@/utils/common";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -9,6 +10,7 @@ const Login = (props) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const router = useRouter();
   const [state, dispatch] = useStore();
+  const user = getValue(state, ["user"], null);
   const loginHandler = async (e) => {
     e.preventDefault();
     const payload = { email, password };
@@ -19,7 +21,6 @@ const Login = (props) => {
       dispatch({ type: authConstants.LOGIN_SUCCESS, payload: session });
       router.replace("/");
     } else {
-      console.log("ERROR DBANJ", result.error);
       dispatch({ type: authConstants.LOGIN_FAILURE, payload: result.error });
       setErrorMessage(result.error);
     }

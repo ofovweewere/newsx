@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
       const authenticated = getValue(state, ["user", "authenticated"], false);
       if (!authenticated) {
         dispatch({ type: authConstants.LOGIN_REQUEST });
+
         const session = await getSession();
         if (session) {
           dispatch({

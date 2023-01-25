@@ -1,5 +1,7 @@
 import { useStore } from "@/client/context";
+import { authConstants } from "@/client/context/constants";
 import { getValue } from "@/utils/common";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 const Header = (props) => {
   const [state, dispatch] = useStore();
@@ -54,11 +56,19 @@ const Header = (props) => {
               </svg>
             </a>
             {authenticated ? (
-              <Link href="/" legacyBehavior>
-                <a className="btn btn-sm btn-outline-secondary" href="#">
-                  Logout
-                </a>
-              </Link>
+              <a
+                className="btn btn-sm btn-outline-secondary"
+                href="#"
+                onClick={() => {
+                  signOut({
+                    redirect: false,
+                  }).then((result) =>
+                    dispatch({ type: authConstants.LOGIN_FAILURE })
+                  );
+                }}
+              >
+                Logout
+              </a>
             ) : (
               <>
                 <Link href="/signup" legacyBehavior>

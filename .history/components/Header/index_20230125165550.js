@@ -1,18 +1,30 @@
 import { useStore } from "@/client/context";
+import { getValue } from "@/utils/common";
 import Link from "next/link";
 const Header = (props) => {
   const [state, dispatch] = useStore();
+  const user = getValue(state, ["user"], null);
+  const authenticated = getValue(state, ["user", "authenticated"], false);
   console.log({ state });
+
   return (
     <div className="container">
       <header className="blog-header lh-1 py-3">
         <div className="row flex-nowrap justify-content-between align-items-center">
           <div className="col-4 pt-1">
-            <Link href={`/profile`} legacyBehavior>
-              <a className="link-secondary" href="#">
-                Jerry
-              </a>
-            </Link>
+            {authenticated ? (
+              <Link href={`/profile`} legacyBehavior>
+                <a className="link-secondary" href="#">
+                  {user.name}
+                </a>
+              </Link>
+            ) : (
+              <Link href={`/`} legacyBehavior>
+                <a className="link-secondary" href="#">
+                  Welcome guest
+                </a>
+              </Link>
+            )}
           </div>
           <div className="col-4 text-center">
             <Link href={`/`} legacyBehavior>
@@ -41,22 +53,30 @@ const Header = (props) => {
                 <path d="M21 21l-5.2-5.2" />
               </svg>
             </a>
-            <Link href="/signup" legacyBehavior>
-              <a
-                className="btn btn-sm btn-outline-secondary user-login-btn"
-                href="#"
-              >
-                Sign up
+            {authenticated ? (
+              <a className="btn btn-sm btn-outline-secondary" href="#">
+                Logout
               </a>
-            </Link>
-            <Link href="/login" legacyBehavior>
-              <a
-                className="btn btn-sm btn-outline-secondary user-login-btn"
-                href="#"
-              >
-                Sign in
-              </a>
-            </Link>
+            ) : (
+              <>
+                <Link href="/signup" legacyBehavior>
+                  <a
+                    className="btn btn-sm btn-outline-secondary user-login-btn"
+                    href="#"
+                  >
+                    Sign up
+                  </a>
+                </Link>
+                <Link href="/login" legacyBehavior>
+                  <a
+                    className="btn btn-sm btn-outline-secondary user-login-btn"
+                    href="#"
+                  >
+                    Sign in
+                  </a>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>

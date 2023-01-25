@@ -11,8 +11,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          authenticating: true,
           ...state.user,
+          authenticating: true,
         },
       };
     }
@@ -20,7 +20,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          ...action.payload,
+          ...action.payload.user,
           authenticating: false,
           authenticated: true,
         },
@@ -44,9 +44,11 @@ export const useStore = () => useContext(Store);
 
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    authenticated: false,
-    authenticating: false,
-    error: null,
+    user: {
+      authenticated: false,
+      authenticating: false,
+      error: null,
+    },
   });
 
   return <Store.Provider value={[state, dispatch]}>{children}</Store.Provider>;

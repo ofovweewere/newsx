@@ -3,8 +3,6 @@ import Head from "next/head";
 import { useStore } from "@/client/context";
 import { useEffect } from "react";
 import { authConstants } from "@/client/context/constants";
-import { getValue } from "@/utils/common";
-import { getSession } from "next-auth/react";
 const Layout = ({ children }) => {
   const [state, dispatch] = useStore();
   useEffect(() => {
@@ -24,7 +22,6 @@ const Layout = ({ children }) => {
         }
       }
     };
-    session();
   }, []);
   return (
     <>
