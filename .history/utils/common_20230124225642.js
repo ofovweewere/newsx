@@ -24,7 +24,7 @@ export const validateAllOnce = (fields) => {
     if (fields[key] === "") {
       console.log("here called validate");
       console.log(key);
-      throw `${key} required`;
+      throw new Error(`${key} required`);
     }
   }
 };

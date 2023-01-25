@@ -1,24 +1,7 @@
-import { getSession, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useState } from "react";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const router = useRouter();
-  const loginHandler = async (e) => {
-    e.preventDefault();
-    const payload = { email, password };
-    const result = await signIn("credentials", { ...payload, redirect: false });
-    if (!result.error) {
-      router.replace("/");
-    } else {
-      setErrorMessage(result.error);
-    }
-    const session = await getSession();
-    console.log({ session });
-    console.log({ result });
-  };
   return (
     <main className="form-signin w-100 m-auto">
       <form
@@ -29,22 +12,14 @@ const Login = (props) => {
       >
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
-        {errorMessage && (
-          <p style={{ textTransform: "capitalize", color: "red" }}>
-            {errorMessage}
-          </p>
-        )}
-
         <div className="form-floating">
           <input
             type="email"
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="floatingInput">Email address</label>
+          <label for="floatingInput">Email address</label>
         </div>
         <div className="form-floating">
           <input
@@ -52,10 +27,8 @@ const Login = (props) => {
             className="form-control"
             id="floatingPassword"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="floatingPassword">Password</label>
+          <label for="floatingPassword">Password</label>
         </div>
 
         <button className="w-100 btn btn-lg btn-primary" type="submit">

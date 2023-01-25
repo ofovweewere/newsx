@@ -1,22 +1,16 @@
 import { getSession, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useState } from "react";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const router = useRouter();
+
   const loginHandler = async (e) => {
     e.preventDefault();
     const payload = { email, password };
     const result = await signIn("credentials", { ...payload, redirect: false });
-    if (!result.error) {
-      router.replace("/");
-    } else {
-      setErrorMessage(result.error);
-    }
-    const session = await getSession();
-    console.log({ session });
+    // const session = await getSession();
+    // console.log({ session });
     console.log({ result });
   };
   return (
@@ -28,12 +22,6 @@ const Login = (props) => {
         onSubmit={loginHandler}
       >
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-
-        {errorMessage && (
-          <p style={{ textTransform: "capitalize", color: "red" }}>
-            {errorMessage}
-          </p>
-        )}
 
         <div className="form-floating">
           <input

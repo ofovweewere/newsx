@@ -22,8 +22,7 @@ export const responseHandler = (data, res, code = 400) => {
 export const validateAllOnce = (fields) => {
   for (let key in fields) {
     if (fields[key] === "") {
-      console.log("here called validate");
-      console.log(key);
+      console.log("here called");
       throw `${key} required`;
     }
   }

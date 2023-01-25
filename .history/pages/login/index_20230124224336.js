@@ -11,9 +11,6 @@ const Login = (props) => {
     const payload = { email, password };
     const result = await signIn("credentials", { ...payload, redirect: false });
     if (!result.error) {
-      router.replace("/");
-    } else {
-      setErrorMessage(result.error);
     }
     const session = await getSession();
     console.log({ session });
@@ -28,12 +25,6 @@ const Login = (props) => {
         onSubmit={loginHandler}
       >
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-
-        {errorMessage && (
-          <p style={{ textTransform: "capitalize", color: "red" }}>
-            {errorMessage}
-          </p>
-        )}
 
         <div className="form-floating">
           <input
