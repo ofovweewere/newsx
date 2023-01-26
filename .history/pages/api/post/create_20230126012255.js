@@ -42,7 +42,7 @@ const handler = nc({
       } else {
         const { title, desc } = req.body;
         validateAllOnce({ title, desc });
-        if (req.file === undefined) {
+        if (req.file) {
           errorHandler("Select image for your news", res);
         }
         // res.status(201).json({ body: req.body, file: req.file });

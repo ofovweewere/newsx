@@ -41,10 +41,7 @@ const handler = nc({
         errorHandler("Access is denied", res);
       } else {
         const { title, desc } = req.body;
-        validateAllOnce({ title, desc });
-        if (req.file === undefined) {
-          errorHandler("Select image for your news", res);
-        }
+        validateAllOnce();
         // res.status(201).json({ body: req.body, file: req.file });
         await dbConnect();
         const userId = session.user.id;

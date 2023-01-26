@@ -1,7 +1,7 @@
 import { staticResourceUrl } from "@/client/config";
 import { dbConnect } from "@/lib/db-connect";
 import Post from "@/models/post";
-import { errorHandler, responseHandler, validateAllOnce } from "@/utils/common";
+import { errorHandler, responseHandler } from "@/utils/common";
 import multer from "multer";
 import { getSession } from "next-auth/react";
 import nc from "next-connect";
@@ -40,11 +40,6 @@ const handler = nc({
       if (!session) {
         errorHandler("Access is denied", res);
       } else {
-        const { title, desc } = req.body;
-        validateAllOnce({ title, desc });
-        if (req.file === undefined) {
-          errorHandler("Select image for your news", res);
-        }
         // res.status(201).json({ body: req.body, file: req.file });
         await dbConnect();
         const userId = session.user.id;
@@ -64,7 +59,7 @@ const handler = nc({
         if (savePost) {
           responseHandler(savePost, res);
         } else {
-          errorHandler(savePost, res);
+          errorHandler("Something went wrong", res);
         }
       }
     } catch (error) {

@@ -1,7 +1,7 @@
 import { staticResourceUrl } from "@/client/config";
 import { dbConnect } from "@/lib/db-connect";
 import Post from "@/models/post";
-import { errorHandler, responseHandler, validateAllOnce } from "@/utils/common";
+import { errorHandler, responseHandler } from "@/utils/common";
 import multer from "multer";
 import { getSession } from "next-auth/react";
 import nc from "next-connect";
@@ -38,36 +38,35 @@ const handler = nc({
     try {
       const session = await getSession({ req });
       if (!session) {
+        console.log("-1000");
         errorHandler("Access is denied", res);
       } else {
-        const { title, desc } = req.body;
-        validateAllOnce({ title, desc });
-        if (req.file === undefined) {
-          errorHandler("Select image for your news", res);
-        }
         // res.status(201).json({ body: req.body, file: req.file });
         await dbConnect();
         const userId = session.user.id;
         const url = staticResourceUrl + req.file.filename;
-
+        console.log("here called -1");
         const slug = slugify(req.body.title, { remove: /[*+~.()'"!:@]/g });
-
+        console.log("here called -2");
         const post = new Post({
           ...req.body,
           image: url,
           slug,
           user: userId,
         });
-
+        console.log("here called 0");
         const savePost = await post.save();
-
+        console.log("Here called");
         if (savePost) {
+          console.log("1");
           responseHandler(savePost, res);
         } else {
-          errorHandler(savePost, res);
+          console.log("2");
+          errorHandler("Something went wrong", res);
         }
       }
     } catch (error) {
+      console.log("3");
       errorHandler(error, res);
     }
   });
