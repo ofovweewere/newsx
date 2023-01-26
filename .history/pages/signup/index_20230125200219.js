@@ -1,35 +1,36 @@
-import { useStore } from "@/client/context";
-import { authConstants } from "@/client/context/constants";
-import Loader from "@/components/Loader";
-import { getValue } from "@/utils/common";
-import { getSession, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signup } from "@/client/request";
 import { useState } from "react";
-const Login = (props) => {
+import { useRouter } from "next/router";
+import { useStore } from "@/client/context";
+import { getValue } from "@/utils/common";
+import Loader from "@/components/Loader";
+const Signup = (props) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const router = useRouter();
-  const [state, dispatch] = useStore();
+  const [state] = useStore();
   const user = getValue(state, ["user"], null);
-  const loginHandler = async (e) => {
+  const signupHandler = async (e) => {
     e.preventDefault();
-    const payload = { email, password };
-    dispatch({ type: authConstants.LOGIN_REQUEST });
-    const result = await signIn("credentials", { ...payload, redirect: false });
-    if (!result.error) {
-      const session = await getSession();
-      dispatch({ type: authConstants.LOGIN_SUCCESS, payload: session });
-      router.replace("/");
+
+    const payload = { name, email, password };
+    const result = await signup(payload);
+
+    if (result.hasError) {
+      setErrorMessage(result.errorMessage);
     } else {
-      dispatch({ type: authConstants.LOGIN_FAILURE, payload: result.error });
-      setErrorMessage(result.error);
+      setErrorMessage(null);
+      setName("");
+      setEmail("");
+      setPassword("");
+      router.replace(`/login`);
     }
   };
 
-  if (user && user.authenticating) {
-    return <Loader />;
-  }
+  return <Loader />;
+
   if (user && user.authenticated) {
     router.replace("/");
     return null;
@@ -40,15 +41,26 @@ const Login = (props) => {
         style={{
           margin: "50px 0",
         }}
-        onSubmit={loginHandler}
+        onSubmit={signupHandler}
       >
-        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-
+        <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
         {errorMessage && (
           <p style={{ textTransform: "capitalize", color: "red" }}>
             {errorMessage}
           </p>
         )}
+
+        <div className="form-floating">
+          <input
+            type="text"
+            className="form-control"
+            id="floatingInput"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="floatingInput">Name</label>
+        </div>
 
         <div className="form-floating">
           <input
@@ -74,7 +86,7 @@ const Login = (props) => {
         </div>
 
         <button className="w-100 btn btn-lg btn-primary" type="submit">
-          Sign in
+          Sign Up
         </button>
         <p className="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
       </form>
@@ -82,4 +94,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Signup;

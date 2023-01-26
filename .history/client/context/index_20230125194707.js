@@ -31,7 +31,7 @@ const reducer = (state, action) => {
         ...state,
         user: {
           ...state.user,
-          authenticating: false,
+          authenticating: true,
           authenticated: false,
           ...action.payload,
         },
@@ -48,7 +48,7 @@ export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     user: {
       authenticated: false,
-      authenticating: true,
+      authenticating: false,
       error: null,
     },
   });
