@@ -11,21 +11,13 @@ export const getStaticProps = async (ctx) => {
       props: {
         posts: res.body,
       },
-      revalidate: 5,
-    };
-  } else {
-    return {
-      props: {
-        posts: [],
-        res,
-      },
-      revalidate: 5,
     };
   }
 };
 export default function Home({ posts }) {
   return (
     <div className="container" style={{ marginTop: "20px" }}>
+      {/* {JSON.stringify(posts)} */}
       {posts &&
         posts.map((post, index) => {
           return (

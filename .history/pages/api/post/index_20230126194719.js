@@ -1,5 +1,5 @@
 import { dbConnect } from "@/lib/db-connect";
-import Post from "@/models/post";
+import post from "@/models/post";
 import { errorHandler, responseHandler } from "@/utils/common";
 
 export default async function handler(req, res) {

@@ -11,15 +11,6 @@ export const getStaticProps = async (ctx) => {
       props: {
         posts: res.body,
       },
-      revalidate: 5,
-    };
-  } else {
-    return {
-      props: {
-        posts: [],
-        res,
-      },
-      revalidate: 5,
     };
   }
 };

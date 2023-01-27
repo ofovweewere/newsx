@@ -11,35 +11,25 @@ export const getStaticProps = async (ctx) => {
       props: {
         posts: res.body,
       },
-      revalidate: 5,
-    };
-  } else {
-    return {
-      props: {
-        posts: [],
-        res,
-      },
-      revalidate: 5,
     };
   }
 };
 export default function Home({ posts }) {
   return (
     <div className="container" style={{ marginTop: "20px" }}>
+      {JSON.stringify(posts)}
       {posts &&
         posts.map((post, index) => {
-          return (
-            <div key={index} className="row">
-              <div className="col">
-                <article class="blog-post">
-                  <h2 class="blog-post-title mb-1">{post.title}</h2>
-                  <p class="blog-post-meta">
-                    {post.createdAt} by <a href="#">Mark</a>
-                  </p>
-                </article>
-              </div>
+          <div key={index} className="row">
+            <div className="col">
+              <article class="blog-post">
+                <h2 class="blog-post-title mb-1">{post.title}</h2>
+                <p class="blog-post-meta">
+                  {post.createdAt} by <a href="#">Mark</a>
+                </p>
+              </article>
             </div>
-          );
+          </div>;
         })}
     </div>
   );

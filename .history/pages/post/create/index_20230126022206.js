@@ -1,31 +1,21 @@
 import { createPost } from "@/client/request";
 import { useState } from "react";
 import style from "./style.module.css";
-import { useRouter } from "next/router";
-import Loader from "@/components/Loader";
-import { useStore } from "@/client/context";
-import { get } from "mongoose";
-import { getValue } from "@/utils/common";
 const PostCreatePage = () => {
   const [image, setImage] = useState(null);
   const [imageInput, setImageInput] = useState(null);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [state] = useStore();
-  const user = getValue(state, ["user"], null);
-  const router = useRouter();
   const handleImage = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImageInput(file);
-      const fileReader = new FileReader();
-      fileReader.onload = function (e) {
-        setImage(e.target.result);
-      };
 
-      fileReader.readAsDataURL(file);
-    }
+    setImageInput(file);
+    const fileReader = new FileReader();
+    fileReader.onload = function (e) {
+      setImage(e.target.result);
+    };
+    fileReader.readAsDataURL(file);
   };
 
   const handleFormData = async (e) => {
@@ -47,14 +37,6 @@ const PostCreatePage = () => {
     }
     console.log("Result", result);
   };
-
-  if (user && user.authenticating) {
-    return <Loader />;
-  }
-  if (!user.authenticated) {
-    router.replace("/login");
-    return null;
-  }
   return (
     <div className={`container ${style["post-create"]}`}>
       <div className="row">
@@ -100,7 +82,6 @@ const PostCreatePage = () => {
           <div className="col">
             <input
               type="file"
-              id="myFile"
               className="form-control"
               onChange={handleImage}
             />
@@ -108,6 +89,7 @@ const PostCreatePage = () => {
           <div className="col">
             {image && (
               <img
+                id="myFile"
                 src={image}
                 alt="uploaded image"
                 style={{ width: "100px" }}

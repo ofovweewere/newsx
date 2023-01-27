@@ -1,8 +1,9 @@
 export const errorHandler = (data, res, code = 400) => {
-  if (data && data.code === 11000) {
+  if (data.code === 11000) {
+    console.log(data);
     res.status(code).json({
       hasError: true,
-      errorMessage: "Duplicate record found",
+      errorMessage: "User already exists",
     });
   } else {
     res.status(code).json({

@@ -11,9 +11,11 @@ export default async function handler(req, res) {
     if (posts) {
       responseHandler(posts, res);
     } else {
+      console.log("6");
       errorHandler("Something went wrong", res);
     }
   } catch (error) {
+    console.log("7", error);
     errorHandler(error, res);
   }
 }

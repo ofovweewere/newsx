@@ -58,9 +58,7 @@ const Header = (props) => {
             {authenticated ? (
               <>
                 <Link href="/post/create" legacyBehavior>
-                  <a className="btn btn-sm btn-outline-secondary user-login-btn">
-                    Create
-                  </a>
+                  <a className="btn btn-sm btn-outline-secondary">Create</a>
                 </Link>
 
                 <a

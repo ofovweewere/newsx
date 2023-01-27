@@ -1,10 +1,12 @@
 export const errorHandler = (data, res, code = 400) => {
   if (data && data.code === 11000) {
+    //console.log(data);
     res.status(code).json({
       hasError: true,
       errorMessage: "Duplicate record found",
     });
   } else {
+    console.log("Here called hhh");
     res.status(code).json({
       hasError: true,
       errorMessage: data,

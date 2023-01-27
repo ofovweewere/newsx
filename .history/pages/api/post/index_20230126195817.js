@@ -9,11 +9,14 @@ export default async function handler(req, res) {
       .select("_id title slug image createdAt")
       .exec();
     if (posts) {
+      console.log("5");
       responseHandler(posts, res);
     } else {
+      console.log("6");
       errorHandler("Something went wrong", res);
     }
   } catch (error) {
+    console.log("7", error);
     errorHandler(error, res);
   }
 }

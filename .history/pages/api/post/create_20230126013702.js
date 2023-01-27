@@ -68,7 +68,7 @@ const handler = nc({
         }
       }
     } catch (error) {
-      console.log("kasnan");
+      console.log("Moticakes");
       errorHandler(error, res);
     }
   });

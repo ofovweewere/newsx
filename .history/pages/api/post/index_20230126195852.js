@@ -14,6 +14,7 @@ export default async function handler(req, res) {
       errorHandler("Something went wrong", res);
     }
   } catch (error) {
+    console.log("7", error);
     errorHandler(error, res);
   }
 }

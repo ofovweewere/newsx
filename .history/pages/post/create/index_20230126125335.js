@@ -51,7 +51,8 @@ const PostCreatePage = () => {
   if (user && user.authenticating) {
     return <Loader />;
   }
-  if (!user.authenticated) {
+  if (!user) {
+    console.log("user", user);
     router.replace("/login");
     return null;
   }

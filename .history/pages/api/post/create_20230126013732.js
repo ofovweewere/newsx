@@ -68,7 +68,6 @@ const handler = nc({
         }
       }
     } catch (error) {
-      console.log("kasnan");
       errorHandler(error, res);
     }
   });
