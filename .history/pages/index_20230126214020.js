@@ -32,7 +32,7 @@ export default function Home({ posts }) {
           return (
             <div key={index} className="row">
               <div className="col">
-                <article className="blog-post">
+                <article class="blog-post">
                   <h2 className="blog-post-title mb-1">{post.title}</h2>
                   <p className="blog-post-meta">
                     {post.createdAt} by <a href="#">Mark</a>

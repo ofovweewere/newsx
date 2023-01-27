@@ -32,15 +32,12 @@ export default function Home({ posts }) {
           return (
             <div key={index} className="row">
               <div className="col">
-                <article className="blog-post">
-                  <h2 className="blog-post-title mb-1">{post.title}</h2>
-                  <p className="blog-post-meta">
+                <article class="blog-post">
+                  <h2 class="blog-post-title mb-1">{post.title}</h2>
+                  <p class="blog-post-meta">
                     {post.createdAt} by <a href="#">Mark</a>
                   </p>
-                  <Link
-                    href={`/post/${post._id}/${post.slug.toLocaleLowerCase()}`}
-                    legacyBehavior
-                  >
+                  <Link href={`/post/${post._id}/${post.slug}`} legacyBehavior>
                     <a>View more</a>
                   </Link>
                 </article>

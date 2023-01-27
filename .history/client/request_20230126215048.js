@@ -31,7 +31,7 @@ export const getAllPosts = async () => {
 
 export const getSinglePost = async (id) => {
   try {
-    const res = await axios.get(baseUrl + `/post/${id}`);
+    const res = await axios.get(baseUrl + `/post`);
     return res.data;
   } catch (error) {
     return getValue(error, ["response", "data"]);

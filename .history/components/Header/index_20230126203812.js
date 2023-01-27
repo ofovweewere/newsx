@@ -7,6 +7,7 @@ const Header = (props) => {
   const [state, dispatch] = useStore();
   const user = getValue(state, ["user"], null);
   const authenticated = getValue(state, ["user", "authenticated"], false);
+
   return (
     <div className="container">
       <header className="blog-header lh-1 py-3">
