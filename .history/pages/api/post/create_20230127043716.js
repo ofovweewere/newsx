@@ -16,7 +16,7 @@ export const config = {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "https://api.cloudinary.com/v1_1/lamadev/image/upload");
+      cb(null, path.join(process.cwd(), "public", "uploads"));
     },
     filename: function (req, file, cb) {
       cb(null, new Date().getTime() + "-" + file.originalname);
