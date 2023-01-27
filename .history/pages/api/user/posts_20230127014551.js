@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (posts) {
       responseHandler(posts, res);
     } else {
-      errorHandler("Something went wrong!", res, 404);
+      errorHandler("Something went wrong", res, 404);
     }
   } catch (error) {
     errorHandler(error, res);
