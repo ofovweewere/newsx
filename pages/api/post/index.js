@@ -6,7 +6,8 @@ export default async function handler(req, res) {
   try {
     await dbConnect();
     const posts = await Post.find({})
-      .select("_id title slug image createdAt")
+      .select("_id title slug image user createdAt")
+      .populate("user", "_id name")
       .exec();
     if (posts) {
       responseHandler(posts, res);

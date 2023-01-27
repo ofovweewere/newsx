@@ -35,7 +35,7 @@ export default function Home({ posts }) {
                 <article className="blog-post">
                   <h2 className="blog-post-title mb-1">{post.title}</h2>
                   <p className="blog-post-meta">
-                    {post.createdAt} by <a href="#">Mark</a>
+                    {post.createdAt} by <a href="#">{post.user.name}</a>
                   </p>
                   <Link
                     href={`/post/${post._id}/${post.slug.toLocaleLowerCase()}`}

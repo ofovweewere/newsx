@@ -37,3 +37,12 @@ export const getSinglePost = async (id) => {
     return getValue(error, ["response", "data"]);
   }
 };
+
+export const getUserPosts = async (id) => {
+  try {
+    const res = await axios.post(baseUrl + `/user/posts`, id);
+    return res.data;
+  } catch (error) {
+    return getValue(error, ["response", "data"]);
+  }
+};
