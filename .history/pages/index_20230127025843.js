@@ -18,6 +18,7 @@ export const getStaticProps = async (ctx) => {
     return {
       props: {
         posts: [],
+        res,
       },
     };
   }
