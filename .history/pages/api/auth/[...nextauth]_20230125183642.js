@@ -52,7 +52,6 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXT_PUBLIC_SECRET,
   callbacks: {
     async session({ session, user, token }) {
       //console.log("Session", { session, user });
