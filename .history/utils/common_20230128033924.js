@@ -1,5 +1,5 @@
 export const errorHandler = (data, res, code = 400) => {
-  console.log("eRROR HANDLER CALLED", data);
+  console.log("eRROR HANDLER CALLED");
   if (data && data.code === 11000) {
     res.status(code).json({
       hasError: true,
