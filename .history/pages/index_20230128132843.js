@@ -7,17 +7,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const getStaticProps = async (ctx) => {
   const res = await getAllPosts();
+  const allProfiles = JSON.stringify(res.body);
   if (res && !res.hasError) {
     return {
       props: {
-        posts: JSON.parse(JSON.stringify(res.body || null)),
+        posts: allProfiles,
       },
       revalidate: 5,
     };
   } else {
     return {
       props: {
-        posts: JSON.parse(JSON.stringify(null)),
+        posts: [],
       },
     };
   }
