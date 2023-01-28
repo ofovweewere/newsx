@@ -14,12 +14,6 @@ export const getStaticProps = async (ctx) => {
       },
       revalidate: 5,
     };
-  } else {
-    return {
-      props: {
-        posts: null,
-      },
-    };
   }
 };
 export default function Home({ posts }) {
