@@ -1,5 +1,5 @@
-import { dbConnect } from "@/lib/db-connect";
 import User from "@/models/user";
+import { dbConnect } from "@/lib/db-connect";
 import { errorHandler, responseHandler, validateAllOnce } from "@/utils/common";
 import bcrypt from "bcrypt";
 export default async function handler(req, res) {
