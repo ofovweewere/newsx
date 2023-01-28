@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export const getServerSideProps = async (ctx) => {
   try {
-    console.log("CTCV", ctx.req);
     const session = await getSession({ req: ctx.req });
     if (session) {
       const res = await getUserPosts({ id: session.user.id });

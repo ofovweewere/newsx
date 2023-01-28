@@ -17,9 +17,10 @@ export const getServerSideProps = async (ctx) => {
       };
     } else {
       return {
-        redirect: {
-          destination: "/login",
-          permanent: false,
+        props: {
+          user: {
+            error: "iserror",
+          },
         },
       };
     }
