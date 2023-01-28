@@ -23,6 +23,6 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
+let Modo = 
 const MongoModel = mongoose.model("User") || mongoose.model("User", UserSchema);
 export default MongoModel;

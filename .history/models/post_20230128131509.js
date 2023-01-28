@@ -1,4 +1,4 @@
-import * as mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema(
   {
@@ -29,6 +29,6 @@ const PostSchema = new mongoose.Schema(
   }
 );
 // mongoose.models = {};
-
-const MongoModel = mongoose.model("Post") || mongoose.model("Post", PostSchema);
+let Modo = mongoose.model("Post", PostSchema);
+const MongoModel = mongoose.model("Post") || Modo;
 export default MongoModel;
