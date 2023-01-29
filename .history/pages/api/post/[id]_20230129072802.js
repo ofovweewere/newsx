@@ -1,20 +1,19 @@
 import { dbConnect } from "@/lib/db-connect";
+// import User from "@/models/user";
 import Post from "@/models/post";
-import User from "@/models/user";
 import { errorHandler, responseHandler } from "@/utils/common";
-
 export default async function handler(req, res) {
   try {
+    const { id } = req.query;
     await dbConnect();
-    const posts = await Post.find({})
-      .select("_id title slug image user createdAt")
-      .populate("user", "_id name", User)
+    const post = await Post.findOne({ _id: id })
+      .select("_id title slug image desc user createdAt")
+      .populate("user", "_id name")
       .exec();
-    console.log("post is", posts);
-    if (posts) {
-      responseHandler(posts, res);
+    if (post) {
+      responseHandler(post, res);
     } else {
-      errorHandler("Something went wrong", res);
+      errorHandler("Something went wrong", res, 404);
     }
   } catch (error) {
     errorHandler(error, res);

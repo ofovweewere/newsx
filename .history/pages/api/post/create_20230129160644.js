@@ -45,7 +45,7 @@ handler.post(async (req, res) => {
         const savePost = await post.save();
 
         if (savePost) {
-          await res.revalidate("/");
+          await res.revalidate("/path-to-revalidate");
           responseHandler(savePost, res);
         } else {
           errorHandler(savePost, res);
