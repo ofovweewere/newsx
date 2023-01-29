@@ -16,11 +16,12 @@ export const getStaticProps = async (ctx) => {
       revalidate: 2,
     };
   } else {
-    return {
-      props: {
-        posts: JSON.parse(JSON.stringify(null)),
-      },
-    };
+    // return {
+    //   props: {
+    //     posts: JSON.parse(JSON.stringify(null)),
+    //   },
+    // };
+    throw new Error(`Failed to fetch posts, received status ${res.status}`);
   }
 };
 export default function Home({ posts }) {

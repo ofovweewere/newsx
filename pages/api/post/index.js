@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     await dbConnect();
     const posts = await Post.find({})
       .select("_id title slug image user createdAt")
-      .populate("user", "_id name", User)
+      .populate("user", "_id name")
       .exec();
     console.log("post is", posts);
     if (posts) {

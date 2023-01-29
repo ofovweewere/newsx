@@ -1,5 +1,5 @@
 import { dbConnect } from "@/lib/db-connect";
-import User from "@/models/user";
+// import User from "@/models/user";
 import Post from "@/models/post";
 import { errorHandler, responseHandler } from "@/utils/common";
 export default async function handler(req, res) {
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     await dbConnect();
     const post = await Post.findOne({ _id: id })
       .select("_id title slug image desc user createdAt")
-      .populate("user", "_id name", User)
+      .populate("user", "_id name")
       .exec();
     if (post) {
       responseHandler(post, res);
