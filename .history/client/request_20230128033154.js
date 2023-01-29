@@ -27,11 +27,8 @@ export const createPost = async (form) => {
 export const getAllPosts = async () => {
   console.log("get all posts called");
   try {
-    const res = await fetch(baseUrl + `/post`);
-    //const res = await axios.get(baseUrl + `/post`);
-    // Parse the JSON
-    const data = await res.json();
-    return data;
+    const res = await axios.get(baseUrl + `/post`);
+    return res.data;
   } catch (error) {
     return getValue(error, ["response", "data"]);
   }

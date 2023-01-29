@@ -31,7 +31,7 @@ export const getAllPosts = async () => {
     //const res = await axios.get(baseUrl + `/post`);
     // Parse the JSON
     const data = await res.json();
-    return data;
+    //return res.data;
   } catch (error) {
     return getValue(error, ["response", "data"]);
   }
