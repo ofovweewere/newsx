@@ -13,7 +13,7 @@ export const getStaticProps = async (ctx) => {
       props: {
         posts: JSON.parse(JSON.stringify(res.body || null)),
       },
-      revalidate: 2,
+      revalidate: 3,
     };
   } else {
     return {
