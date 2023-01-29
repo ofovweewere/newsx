@@ -58,6 +58,9 @@ const PostCreatePage = () => {
         }
       );
       const data = await res.json();
+      console.log(data);
+      console.log(data.url);
+
       const { url } = data;
       form.append("url", url);
       const result = await createPost(form);

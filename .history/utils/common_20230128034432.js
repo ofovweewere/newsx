@@ -1,4 +1,5 @@
 export const errorHandler = (data, res, code = 400) => {
+  console.log("eRROR HANDLER CALLED", data);
   if (data && data.code === 11000) {
     res.status(code).json({
       hasError: true,
@@ -41,6 +42,7 @@ export const getValue = (obj, path, defaultValue) => {
       return myValue;
     }
   } catch (error) {
+    //console.log({ error });
     return defaultValue;
   }
 };

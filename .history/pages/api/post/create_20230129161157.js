@@ -58,7 +58,6 @@ handler.post(async (req, res) => {
     // do stuff with files and body
     res.status(HttpStatus.OK).json({});
   } catch (err) {
-    console.log(err.message);
     res.status(HttpStatus.BAD_REQUEST).json({
       hasError: true,
       errorMessage: "Something went wrong in create post",

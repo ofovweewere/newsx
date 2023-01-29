@@ -14,6 +14,9 @@ export const signup = async (payload) => {
 export const createPost = async (form) => {
   try {
     // Display the key/value pairs
+    for (var pair of form.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     const res = await axios.post(baseUrl + `/post/create`, form);
     return res.data;
   } catch (error) {
@@ -22,6 +25,7 @@ export const createPost = async (form) => {
 };
 
 export const getAllPosts = async () => {
+  console.log("get all posts called");
   try {
     const res = await fetch(baseUrl + `/post`);
     //const res = await axios.get(baseUrl + `/post`);

@@ -22,6 +22,7 @@ export const createPost = async (form) => {
 };
 
 export const getAllPosts = async () => {
+  console.log("get all posts called");
   try {
     const res = await fetch(baseUrl + `/post`);
     //const res = await axios.get(baseUrl + `/post`);

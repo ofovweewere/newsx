@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const getStaticProps = async (ctx) => {
   const res = await getAllPosts();
+
   if (res && !res.hasError) {
     return {
       props: {
