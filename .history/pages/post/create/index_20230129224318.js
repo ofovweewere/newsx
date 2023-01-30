@@ -40,7 +40,7 @@ const PostCreatePage = () => {
     datas.append("upload_preset", "upload");
 
     if (!imageInput) {
-      setErrorMessage("Image Required");
+      setErrorMessage("Image required");
     } else {
       setErrorMessage("");
       try {

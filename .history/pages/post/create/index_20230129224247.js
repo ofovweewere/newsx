@@ -40,9 +40,8 @@ const PostCreatePage = () => {
     datas.append("upload_preset", "upload");
 
     if (!imageInput) {
-      setErrorMessage("Image Required");
+      setErrorMessage("Image required");
     } else {
-      setErrorMessage("");
       try {
         // const uploadRes = await axios.post(
         //   "https://api.cloudinary.com/v1_1/dx8ndowtw/image/upload",

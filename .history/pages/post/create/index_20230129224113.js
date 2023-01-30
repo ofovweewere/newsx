@@ -39,46 +39,45 @@ const PostCreatePage = () => {
     datas.append("file", imageInput);
     datas.append("upload_preset", "upload");
 
-    if (!imageInput) {
-      setErrorMessage("Image Required");
-    } else {
-      setErrorMessage("");
-      try {
-        // const uploadRes = await axios.post(
-        //   "https://api.cloudinary.com/v1_1/dx8ndowtw/image/upload",
-        //   data,
-        //   {
-        //     headers: {
-        //       "Access-Control-Allow-Origin": "*",
-        //       "Content-Type": "application/json",
-        //     },
-        //   }
-        // );
-        const res = await fetch(
-          `https://api.cloudinary.com/v1_1/dx8ndowtw/image/upload`,
-          {
-            method: "POST",
-            body: datas,
-          }
-        );
-        const data = await res.json();
-        const { url } = data;
-        form.append("url", url);
-        const result = await createPost(form);
-        if (result && result.hasError) {
-          setErrorMessage(result.errorMessage);
-        } else {
-          setTitle("");
-          setDesc("");
-          setImageInput(null);
-          setImage(null);
-          setErrorMessage("");
-          document.getElementById("myFile").value = "";
+    if (!file) {
+      throw "Image required";
+    }
+
+    try {
+      // const uploadRes = await axios.post(
+      //   "https://api.cloudinary.com/v1_1/dx8ndowtw/image/upload",
+      //   data,
+      //   {
+      //     headers: {
+      //       "Access-Control-Allow-Origin": "*",
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/dx8ndowtw/image/upload`,
+        {
+          method: "POST",
+          body: datas,
         }
-      } catch (err) {
-        setErrorMessage("Error uploading image");
-        console.log("Error uploading image", err);
+      );
+      const data = await res.json();
+      const { url } = data;
+      form.append("url", url);
+      const result = await createPost(form);
+      if (result && result.hasError) {
+        setErrorMessage(result.errorMessage);
+      } else {
+        setTitle("");
+        setDesc("");
+        setImageInput(null);
+        setImage(null);
+        setErrorMessage("");
+        document.getElementById("myFile").value = "";
       }
+    } catch (err) {
+      setErrorMessage("Error uploading image");
+      console.log("Error uploading image", err);
     }
   };
   if (user && user.authenticating) {

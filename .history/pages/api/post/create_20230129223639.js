@@ -60,7 +60,7 @@ handler.post(async (req, res) => {
   } catch (err) {
     res.status(HttpStatus.BAD_REQUEST).json({
       hasError: true,
-      errorMessage: err,
+      errorMessage: "Something went wrong in create post",
     });
   }
 });
