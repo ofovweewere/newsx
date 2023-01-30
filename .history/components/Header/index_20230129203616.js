@@ -48,10 +48,7 @@ const Header = (props) => {
                 </Link>
               )}
             </div>
-            <div
-              className="col-4 text-center"
-              style={{ flexGrow: "1", textAlign: "start !important" }}
-            >
+            <div className="col-4 text-center">
               <Link href={`/`} legacyBehavior>
                 <a className="blog-header-logo text-dark" href="#">
                   NEWSX

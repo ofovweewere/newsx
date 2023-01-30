@@ -69,6 +69,7 @@ const Header = (props) => {
               marginTop: "12px !important",
             }}
           >
+            {size}
             <div className="col-4 d-flex justify-content-end align-items-center">
               <a className="link-secondary" href="#" aria-label="Search">
                 <svg

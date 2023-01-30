@@ -48,10 +48,7 @@ const Header = (props) => {
                 </Link>
               )}
             </div>
-            <div
-              className="col-4 text-center"
-              style={{ flexGrow: "1", textAlign: "start !important" }}
-            >
+            <div className="col-4 text-center">
               <Link href={`/`} legacyBehavior>
                 <a className="blog-header-logo text-dark" href="#">
                   NEWSX
@@ -63,11 +60,7 @@ const Header = (props) => {
           {/* FSDFDFS */}
           <div
             className="row  justify-content-between align-items-center"
-            style={{
-              flexWrap: "wrap !important",
-              justifyContent: "flex-end !important",
-              marginTop: "12px !important",
-            }}
+            style={{ flexWrap: "wrap !important" }}
           >
             <div className="col-4 d-flex justify-content-end align-items-center">
               <a className="link-secondary" href="#" aria-label="Search">

@@ -28,7 +28,7 @@ const PostDetailsPage = ({ post }) => {
             {post.createdAt} by <a href="#">{post.user.name}</a>
           </p>
           <div style={{ textAlign: "center", margin: "50px 0" }}>
-            <img src={post.image} alt={post.title} style={{ width: "80%" }} />
+            <img src={post.image} alt={post.title} style={{ width: "500px" }} />
           </div>
 
           <p>{post.desc}</p>
